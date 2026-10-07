@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>פאדלנט | רשת מגרשי פאדל</title>
+<meta name="description" content="פאדלנט – רשת מגרשי פאדל: ספורטן פתח תקווה, נשר, ובקרוב רמת אפעל. הזמינו מגרש עכשיו.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Karantina:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --glass:#EEF3F7;      /* רקע – כמו קיר זכוכית */
+    --court:#123C8C;      /* כחול מגרש עמוק */
+    --turf:#2B63D9;       /* כחול דשא */
+    --ball:#E3EE4A;       /* צהוב כדור – במשורה */
+    --ink:#14213D;
+    --muted:#4A5874;
+    --line:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--glass);color:var(--ink);font-family:"Assistant",system-ui,sans-serif;font-size:18px;line-height:1.6}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--ball);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+  /* ניווט */
+  header{position:sticky;top:0;z-index:5;background:rgba(238,243,247,.92);backdrop-filter:blur(8px);border-bottom:1px solid #D5DEE8}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:"Karantina",sans-serif;font-weight:700;font-size:34px;letter-spacing:.5px;text-decoration:none;color:var(--court)}
+  .nav ul{display:flex;gap:28px;list-style:none}
+  .nav ul a{text-decoration:none;font-weight:600;color:var(--muted)}
+  .nav ul a:hover{color:var(--court)}
+  .btn{display:inline-block;background:var(--court);color:#fff;text-decoration:none;font-weight:700;padding:12px 24px;border-radius:999px;transition:background .2s}
+  .btn:hover{background:var(--turf)}
+  .btn.ball{background:var(--ball);color:var(--ink)}
+  .btn.ball:hover{background:#fff}
+
+  /* הירו – המגרש הוא הדבר הבולט בדף */
+  .hero{background:var(--court);color:#fff;overflow:hidden}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding-top:72px;padding-bottom:80px}
+  .hero h1{font-family:"Karantina",sans-serif;font-weight:700;font-size:clamp(72px,11vw,148px);line-height:.85;letter-spacing:.5px}
+  .hero p{font-size:21px;max-width:30ch;margin:24px 0 32px;color:#D6E2FA}
+  .court-art{width:100%;max-width:420px;justify-self:center}
+  .court-art .ballpt{animation:rally 4.5s ease-in-out infinite}
+  @keyframes rally{0%{transform:translate(0,0)}25%{transform:translate(70px,-150px)}50%{transform:translate(-50px,-260px)}75%{transform:translate(40px,-110px)}100%{transform:translate(0,0)}}
+  @media (prefers-reduced-motion:reduce){.court-art .ballpt{animation:none}}
+
+  section{padding:88px 0}
+  h2{font-family:"Karantina",sans-serif;font-weight:700;font-size:clamp(48px,6vw,72px);line-height:.95;color:var(--court);margin-bottom:12px}
+  .lead{color:var(--muted);max-width:56ch;margin-bottom:48px}
+
+  /* מועדונים – מספר המגרשים מוצג כמגרשים קטנים */
+  .clubs{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .club{background:#fff;border:2px solid #D5DEE8;border-radius:18px;padding:28px;display:flex;flex-direction:column}
+  .club h3{font-size:26px;line-height:1.2;margin-bottom:4px}
+  .club .where{color:var(--muted);margin-bottom:20px}
+  .courts{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+  .courts i{width:26px;height:40px;background:var(--turf);border:2px solid var(--line);outline:2px solid var(--turf);border-radius:2px;position:relative}
+  .courts i::after{content:"";position:absolute;left:0;right:0;top:50%;border-top:2px solid #fff}
+  .count{font-weight:700;margin-bottom:24px}
+  .club .btn{margin-top:auto;align-self:flex-start}
+  .club.soon{background:transparent;border-style:dashed}
+  .club.soon .courts i{background:transparent;outline-color:#9DB3DA;border-color:transparent}
+  .club.soon .courts i::after{border-color:#9DB3DA}
+  .tag{display:inline-block;background:var(--ball);color:var(--ink);font-weight:700;font-size:15px;padding:2px 12px;border-radius:999px;margin-bottom:12px;align-self:flex-start}
+
+  /* בוקר */
+  .morning{background:#fff;border-top:1px solid #D5DEE8;border-bottom:1px solid #D5DEE8}
+  .morning .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .clock{font-family:"Karantina",sans-serif;font-weight:700;font-size:clamp(88px,13vw,170px);line-height:.8;color:var(--turf);direction:ltr;text-align:right}
+  .clock small{display:block;font-family:"Assistant",sans-serif;font-size:20px;font-weight:600;color:var(--muted);margin-top:16px;direction:rtl}
+  .morning ul{list-style:none;margin:8px 0 32px}
+  .morning li{padding:10px 0;border-bottom:1px solid #E3E9F0}
+
+  /* מתחילים */
+  .first{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  .first h3{font-size:22px;margin-bottom:6px}
+  .first p{color:var(--muted)}
+  .first .step{border-top:4px solid var(--turf);padding-top:20px}
+
+  /* סיום */
+  .cta{background:var(--turf);color:#fff;text-align:center}
+  .cta h2{color:#fff}
+  .cta p{color:#E2EBFC;margin:0 auto 32px;max-width:44ch}
+  footer{background:var(--court);color:#B9C9EA;padding:32px 0;font-size:16px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+  @media (max-width:900px){
+    .hero .wrap,.morning .wrap{grid-template-columns:1fr}
+    .clubs,.first{grid-template-columns:1fr}
+    .court-art{max-width:300px}
+    .nav ul{display:none}
+    section{padding:64px 0}
+    .clock{text-align:right}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#">פאדלנט</a>
+    <ul>
+      <li><a href="#clubs">המועדונים</a></li>
+      <li><a href="#morning">שעות בוקר</a></li>
+      <li><a href="#first">פעם ראשונה</a></li>
+    </ul>
+    <!-- להחליף בקישור ההזמנה הישיר שלכם ב-GoPlay -->
+    <a class="btn" href="https://goplay.co.il" target="_blank" rel="noopener">הזמנת מגרש</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>פאדל.<br>קרוב לבית.<br>כל בוקר.</h1>
+      <p>פאדלנט – רשת מגרשי פאדל מבית מי שהביאו את הפאדל לישראל. 15 מגרשים בשלושה מועדונים.</p>
+      <a class="btn ball" href="#clubs">למצוא מועדון</a>
+    </div>
+    <svg class="court-art" viewBox="0 0 200 400" role="img" aria-label="שרטוט מגרש פאדל מלמעלה">
+      <rect x="4" y="4" width="192" height="392" rx="4" fill="#2B63D9" stroke="#fff" stroke-width="4"/>
+      <line x1="4" y1="200" x2="196" y2="200" stroke="#E3EE4A" stroke-width="5"/>
+      <line x1="4" y1="76" x2="196" y2="76" stroke="#fff" stroke-width="3"/>
+      <line x1="4" y1="324" x2="196" y2="324" stroke="#fff" stroke-width="3"/>
+      <line x1="100" y1="76" x2="100" y2="324" stroke="#fff" stroke-width="3"/>
+      <circle class="ballpt" cx="70" cy="300" r="7" fill="#E3EE4A"/>
+    </svg>
+  </div>
+</div>
+
+<main>
+  <section id="clubs">
+    <div class="wrap">
+      <h2>המועדונים שלנו</h2>
+      <p class="lead">בחרו מועדון והזמינו מגרש אונליין. כל ריבוע מייצג מגרש.</p>
+      <div class="clubs">
+        <article class="club">
+          <h3>ספורטן</h3>
+          <div class="where">פתח תקווה</div>
+          <div class="courts" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <div class="count">4 מגרשים</div>
+          <a class="btn" href="https://goplay.co.il" target="_blank" rel="noopener">הזמנה בספורטן</a>
+        </article>
+        <article class="club">
+          <h3>נשר</h3>
+          <div class="where">צפון</div>
+          <div class="courts" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="count">5 מגרשים</div>
+          <a class="btn" href="https://goplay.co.il" target="_blank" rel="noopener">הזמנה בנשר</a>
+        </article>
+        <article class="club soon">
+          <span class="tag">בקרוב</span>
+          <h3>רמת אפעל</h3>
+          <div class="where">מועדון פרימיום במרכז</div>
+          <div class="courts" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="count">6 מגרשים</div>
+          <!-- להחליף בקישור להרשמה / וואטסאפ -->
+          <a class="btn" href="#join">לעדכונים על הפתיחה</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="morning" class="morning">
+    <div class="wrap">
+      <div class="clock">06:30<br>10:00<small>החלון הכי נעים במגרש</small></div>
+      <div>
+        <h2>שחקו לפני החום</h2>
+        <p class="lead" style="margin-bottom:8px">הבוקר הוא הזמן הטוב ביותר לפאדל: מגרשים פנויים, אוויר קריר, ומתחילים את היום עם אנרגיה.</p>
+        <ul>
+          <li>זמינות גבוהה – קל למצוא מגרש בדיוק בשעה שנוחה לכם</li>
+          <li>מושלם לפני העבודה, משחק של שעה ויוצאים לדרך</li>
+          <li>מתאים לקבוצות קבועות ולמתחילים</li>
+        </ul>
+        <a class="btn" href="https://goplay.co.il" target="_blank" rel="noopener">להזמין משחק בוקר</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="first">
+    <div class="wrap">
+      <h2>פעם ראשונה בפאדל?</h2>
+      <p class="lead">לא צריך ניסיון. אם החזקתם פעם מחבט – תסתדרו מצוין.</p>
+      <div class="first">
+        <div class="step"><h3>מזמינים מגרש</h3><p>משחקים בזוגות, ארבעה שחקנים במגרש. שעה מספיקה כדי להתאהב.</p></div>
+        <div class="step"><h3>מגיעים עם נעלי ספורט</h3><p>מחבטים של Nox, המותג המוביל בעולם, זמינים במועדון.</p></div>
+        <div class="step"><h3>משחקים</h3><p>הקירות הם חלק מהמשחק. אחרי כמה דקות כבר מבינים למה כולם מדברים על זה.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="join" class="cta">
+    <div class="wrap">
+      <h2>נתראה במגרש</h2>
+      <p>הזמנת מגרש לוקחת פחות מדקה. בחרו מועדון, שעה, וזהו.</p>
+      <a class="btn ball" href="https://goplay.co.il" target="_blank" rel="noopener">הזמנת מגרש</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>פאדלנט – רשת מגרשי פאדל</span>
+    <span>היבואן הרשמי של Nox בישראל</span>
+  </div>
+</footer>
+
+</body>
+</html>
